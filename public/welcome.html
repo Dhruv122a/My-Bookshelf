@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to BookShelf</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+</head>
+
+<body>
+
+    <div class="welcome-container">
+        <video autoplay muted loop playsinline class="welcome-video">
+            <source src="assets/welcome-video3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="welcome-overlay"></div>
+
+        <div class="welcome-content">
+            <img src="assets/logo.png" alt="BookShelf Logo" class="welcome-logo">
+            <h1>Welcome to BookShelf</h1>
+            <p id="welcome-subtitle"></p>
+            <a href="index.html" class="welcome-button">Enter Store</a>
+        </div>
+    </div>
+
+    <script>
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var options = {
+                strings: [
+                    'Your adventure into new worlds begins here.',
+                    'Discover your next great read.',
+                    'Thousands of stories, one destination.'
+                ],
+                typeSpeed: 50,      // Speed of typing
+                backSpeed: 25,      // Speed of deleting
+                backDelay: 2000,    // Pause before deleting
+                startDelay: 500,    // Pause before starting
+                loop: true,         // Loop the animation
+                smartBackspace: true // Only delete what's new
+            };
+            // Initialize Typed.js on the element with the ID 'welcome-subtitle'
+            var typed = new Typed('#welcome-subtitle', options);
+        });
+    </script>
+
+</body>
+
+</html>

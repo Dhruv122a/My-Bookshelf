@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Book - BookShelf</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <a href="index.html" class="logo"><img src="assets/logo.png" alt="BookShelf Logo">BookShelf</a>
+        <div class="nav-right">
+            <button id="theme-toggle">🌙</button>
+            <div class="nav-links">
+            </div>
+        </div>
+        <button class="hamburger" id="hamburger-btn">☰</button>
+    </nav>
+
+    <main class="container page-container">
+        <div class="form-container">
+            <h1>Upload a New Book</h1>
+            <form id="uploadForm">
+                <div class="form-group">
+                    <label for="title">Book Title</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text" id="author" name="author" required>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price (INR)</label>
+                    <input type="number" id="price" name="price" required>
+                </div>
+
+
+                
+
+
+
+                <div class="form-group">
+                    <label for="coverImage">Cover Image (JPEG/PNG)</label>
+                    <div class="custom-file-input-simple" id="coverImageContainer">
+                        <input type="file" id="coverImage" name="coverImage" accept="image/jpeg, image/png" required>
+                        <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/></svg>
+                        <span class="file-name-display" id="coverImageFileName">Click to upload a cover image</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="bookPdf">Book PDF</label>
+                    <div class="custom-file-input-simple" id="bookPdfContainer">
+                        <input type="file" id="bookPdf" name="bookPdf" accept=".pdf" required>
+                        <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/></svg>
+                        <span class="file-name-display" id="bookPdfFileName">Click to upload the book PDF</span>
+                    </div>
+                </div>
+                <button type="submit">Upload Book</button>
+            </form>
+            <p id="uploadMessage"></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 BookShelf Project</p>
+    </footer>
+    <script src="script.js"></script>
+    <script src="upload.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1787 @@
+/* public/style.css - Organized Structure */
+
+/* ==================================== */
+/* 1. IMPORTS & GLOBAL VARIABLES (THEME) */
+/* ==================================== */
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* --- LIGHT MODE VARIABLES (Default) --- */
+:root {
+    --primary-color: #0077cc;
+    --primary-hover: #005fa3;
+    --background-color: #f4f4f9;
+    --card-bg-color: #ffffff;
+    --text-color: #333;
+    --border-color: #ddd;
+    --success-color: #28a745;
+    --error-color: #dc3545;
+}
+
+/* --- DARK MODE VARIABLES --- */
+body.dark-mode {
+    --primary-color: #1e88e5;
+    --primary-hover: #1565c0;
+    --background-color: #121212;
+    --card-bg-color: #1e1e1e;
+    --text-color: #e0e0e0;
+    --border-color: #444;
+}
+
+/* ==================================== */
+/* 2. BASE & UTILITY STYLES */
+/* ==================================== */
+
+/* Reset Box Model */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Base Body Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Main Content Container */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* Page Container for fixed nav spacing */
+.page-container {
+    padding-top: 100px;
+}
+
+/* General Button Styles */
+button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background: var(--primary-hover);
+}
+
+/* Utility Link Button Style (Used for 'Buy' or general links) */
+.button-link {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.button-link:hover {
+    background: var(--primary-hover);
+}
+
+/* Animation for content fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================================== */
+/* 3. NAVIGATION BAR & HEADER */
+/* ==================================== */
+
+/* Navigation Bar */
+nav {
+    background: var(--card-bg-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+/* Logo */
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-right: auto;
+}
+
+.logo img {
+    height: 59px;
+    vertical-align: middle;
+}
+
+/* Right side of Nav */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    opacity: 0; /* <-- ADD THIS LINE */
+    transition: opacity 0.3s ease-in-out; /* <-- ADD THIS LINE */
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+/* Hamburger Menu Button */
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    margin-left: 1rem;
+    transition: transform 0.3s ease;
+}
+
+/* User Info Section */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar {
+    font-size: 1.5rem;
+}
+
+.user-name {
+    font-weight: 600;
+}
+
+/* Logout Button */
+#logout-button {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+#logout-button:hover {
+    background-color: var(--error-color);
+    color: white;
+    border-color: var(--error-color);
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#theme-toggle:hover {
+    background-color: var(--background-color);
+}
+
+/* ==================================== */
+/* 4. HERO SECTION (VIDEO/SLIDER) */
+/* ==================================== */
+
+.hero {
+    position: relative;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+}
+
+/* --- Hero Slider Specific Styles --- */
+.hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* Slider Controls (Buttons) */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.slider-btn:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.slider-btn svg {
+    fill: white;
+    width: 30px;
+    height: 30px;
+}
+
+.prev-btn {
+    left: 2rem;
+}
+
+.next-btn {
+    right: 2rem;
+}
+
+/* ==================================== */
+/* 5. BOOK LIST & CONTROLS */
+/* ==================================== */
+
+/* Main Header (for controls) */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Controls Container (Search and Filter) */
+.controls-container {
+    display: flex;
+    gap: 1rem;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+/* Search Input Container & Icon */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 220px;
+    /* Min-width moved to container */
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    width: 20px;
+    height: 20px;
+    fill: var(--text-color);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Search Bar & Author Filter Styles (Inputs) */
+#search-bar,
+#author-filter {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    min-width: 220px;
+    /* Redundant now, but kept for legacy */
+}
+
+/* Adjust padding for search bar due to icon */
+#search-bar {
+    padding-left: 40px;
+}
+
+/* Currency Selector */
+.currency-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.currency-selector select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
+
+/* Book List Grid */
+#book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+/* Book Card */
+.book-card {
+    background: var(--card-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.book-cover {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.book-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.book-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.book-info p {
+    margin-bottom: 1rem;
+}
+
+.book-info p.author {
+    font-style: italic;
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+body.dark-mode .book-info p.author {
+    color: #aaa;
+}
+
+.book-info button {
+    font-size: 1rem;
+    margin-top: auto;
+}
+
+
+
+/* ==================================== */
+/* 6. AUTH FORMS (LOGIN/REGISTER) */
+/* ==================================== */
+
+.form-container {
+    background: var(--card-bg-color);
+    padding: 2.5rem;
+    margin: 50px auto;
+    max-width: 450px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.form-container h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Messages for forms */
+#message,
+#loginMessage {
+    text-align: center;
+    margin-top: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* ==================================== */
+/* 7. WELCOME PAGE */
+/* ==================================== */
+
+.welcome-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+}
+
+/* Background Video */
+.welcome-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1;
+}
+
+/* Overlay for contrast */
+.welcome-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.welcome-content {
+    max-width: 600px;
+    animation: fadeIn 1s ease-in-out;
+    position: relative;
+    z-index: 3;
+}
+
+.welcome-logo {
+    width: 206px;
+    height: auto;
+    margin-bottom: -1.5rem;
+}
+
+.welcome-content h1 {
+    font-size: 3.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    /* Color is now inherited from .welcome-container (white) */
+}
+
+.welcome-content p {
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+    display: inline-block;
+    /* For the typed cursor */
+}
+
+/* Welcome Button */
+.welcome-button {
+    display: block;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0 auto;
+    background: var(--primary-color);
+    color: #fff;
+    padding: 14px 32px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.welcome-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Typed Cursor */
+.typed-cursor {
+    transition: opacity 0.2s ease-in-out;
+    vertical-align: middle;
+}
+
+#welcome-subtitle .typed-cursor {
+    font-size: 1.25rem;
+    opacity: 1;
+    display: inline;
+}
+
+/* ==================================== */
+/* 8. CHECKOUT PAGE */
+/* ==================================== */
+
+#checkout-view {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.checkout-container {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Book Details Panel */
+#book-details-checkout {
+    flex: 1;
+    min-width: 280px;
+    background: var(--card-bg-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.book-cover-checkout {
+    max-width: 220px;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#book-details-checkout .price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: 1rem;
+}
+
+/* Payment Form Panel */
+.payment-form {
+    flex: 1.5;
+    min-width: 300px;
+    background: var(--card-bg-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-heading {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+#checkout-message {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+/* Success Message Panel */
+.success-message {
+    max-width: 600px;
+    margin: 2rem auto;
+    background: var(--card-bg-color);
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 5px solid var(--success-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Back Link (Go back to shop) */
+.back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+    transform: translateX(-5px);
+}
+
+/* ==================================== */
+/* 9. MY BOOKS PAGE (PURCHASED LIST) */
+/* ==================================== */
+
+.book-list {
+    /* Used as a general grid container for my books */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.purchased-book-card {
+    display: flex;
+    align-items: center;
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 15px;
+    gap: 15px;
+    height: 180px;
+}
+
+.purchased-book-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.purchased-book-cover {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.purchased-book-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.purchased-book-title {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin: 0 0 3px 0;
+    line-height: 1.3;
+}
+
+.purchased-book-author {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 12px;
+}
+
+body.dark-mode .purchased-book-author {
+    color: #bbb;
+}
+
+/* Download Button Specific Styles */
+.download-btn {
+    background-color: var(--success-color);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #1e7e34;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.download-icon {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: #fff;
+}
+
+/* Pill shape and alignment for My Books page button */
+.purchased-book-details .download-btn {
+    align-self: flex-start;
+    padding: 8px 18px;
+    font-size: 0.9rem;
+    border-radius: 25px;
+    min-width: 120px;
+    text-align: center;
+}
+
+/* Style for empty state message */
+.info-message {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    padding: 30px;
+    background-color: var(--card-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-top: 30px;
+    grid-column: 1 / -1;
+}
+
+.info-message a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.info-message a:hover {
+    text-decoration: underline;
+}
+
+/* ==================================== */
+/* 10. FOOTER */
+/* ==================================== */
+
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background-color: var(--card-bg-color);
+    color: #777;
+    transition: background-color 0.3s;
+}
+
+/* ==================================== */
+/* 11. MEDIA QUERIES (RESPONSIVE DESIGN) */
+/* ==================================== */
+
+/* Tablet & Smaller Devices (Max Width 992px) */
+@media (max-width: 992px) {
+
+    /* Main Header Layout Adjustments */
+    .main-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .main-header h2 {
+        text-align: center;
+    }
+
+    /* Move Search/Filter to bottom and stack vertically */
+    .controls-container {
+        order: 3;
+        flex-direction: column;
+    }
+
+    /* Move Currency Selector to middle and center */
+    .currency-selector {
+        order: 2;
+        justify-content: center;
+    }
+}
+
+/* Mobile Devices & Smaller (Max Width 768px) */
+@media (max-width: 768px) {
+
+    /* Hero Section */
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    /* Welcome Page */
+    .welcome-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .welcome-content p {
+        font-size: 1.1rem;
+    }
+
+    /* Navigation Menu Activation (Mobile) */
+    .hamburger {
+        display: block;
+        transition: transform 0.3s ease;
+    }
+
+    /* Mobile Menu Initial State */
+    .nav-right {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--card-bg-color);
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        opacity: 0;
+        transform: translateY(-20px);
+        pointer-events: none;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Mobile Menu Active State */
+    .nav-right.active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        opacity: 0;
+        /* <-- ADD THIS LINE */
+        transition: opacity 0.3s ease-in-out;
+        /* <-- ADD THIS LINE */
+    }
+
+    .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0;
+        border-radius: 5px;
+        transition: background-color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+        background-color: var(--background-color);
+    }
+}
+
+/* --- SCROLL-TO-TOP BUTTON STYLES (Perfectly Centered) --- */
+#scroll-to-top-btn {
+    display: none;
+    position: fixed;
+    bottom: 40px;
+    left: 40px;
+    z-index: 100;
+
+    /* Size and Shape */
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+
+    /* Background and Color */
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    border: none;
+
+    /* ▼▼▼ UPDATED CODE FOR CENTERING ▼▼▼ */
+    display: flex;
+    align-items: center;
+    /* Vertically centers the arrow */
+    justify-content: center;
+    /* Horizontally centers the arrow */
+
+    /* Text/Icon Styling */
+    font-size: 28px;
+    font-weight: bold;
+
+    /* Interaction & Visuals */
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3), 0 0 0 4px rgba(0, 123, 255, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* The :hover and :active styles can remain the same */
+#scroll-to-top-btn:hover {
+    background: linear-gradient(135deg, #0056b3, #003f8e);
+    transform: translateY(-5px) scale(1.08);
+    box-shadow: 0 10px 20px rgba(0, 123, 255, 0.4), 0 0 0 6px rgba(0, 123, 255, 0.2);
+}
+
+#scroll-to-top-btn:active {
+    transform: translateY(0) scale(1);
+    background: linear-gradient(135deg, #003f8e, #002b66);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* --- HEADER ENHANCEMENT STYLES --- */
+
+/* Add a subtle line below the navbar for better separation */
+nav {
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    /* Optional: a very light shadow */
+}
+
+body.dark-mode nav {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Improve alignment and spacing for all items on the right */
+.nav-right {
+    gap: 1.2rem;
+    /* Increase spacing between elements */
+}
+
+.nav-links {
+    gap: 1.2rem;
+    opacity: 0;
+    /* <-- ADD THIS LINE */
+    transition: opacity 0.3s ease-in-out;
+    /* <-- ADD THIS LINE */
+}
+
+/* Style the navigation links with a modern hover effect */
+.nav-links a {
+    position: relative;
+    /* Needed for the animated underline */
+    padding: 8px 4px;
+    /* Add some vertical padding */
+    transition: color 0.3s ease;
+}
+
+/* Creates the animated underline */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    /* Start with no width */
+    transform-origin: center;
+    transition: transform 0.3s ease-out;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+    /* Highlight text on hover */
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+    /* Animate to full width on hover */
+}
+
+/* Enhance the user info block */
+.user-info {
+    gap: 12px;
+    /* Increase space between icon and name */
+    background-color: var(--background-color);
+    padding: 6px 12px;
+    border-radius: 20px;
+    /* Pill shape */
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.user-info:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+.user-avatar {
+    font-size: 1.2rem;
+    /* Slightly smaller icon */
+    background-color: var(--primary-color);
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Restyle the logout button to be more modern */
+#logout-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    /* Pill shape */
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+#logout-button:hover {
+    background-color: var(--error-color);
+    /* Changes to red on hover */
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
+}
+
+
+/* --- HEADER ICONS ENHANCEMENT --- */
+
+/* Base style for all links with icons */
+.nav-link-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* Space between icon and text */
+}
+
+/* Style for the SVG icons themselves */
+.nav-link-with-icon svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+    /* Icon color will match the text color */
+    transition: transform 0.3s ease;
+}
+
+.nav-link-with-icon:hover svg {
+    transform: scale(1.1);
+    /* Slightly enlarge icon on hover */
+}
+
+
+/* New style for the logout button to make it a circular icon button */
+.logout-button-styled {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.logout-button-styled svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+.logout-button-styled:hover {
+    background-color: var(--error-color);
+    border-color: var(--error-color);
+    color: white;
+    transform: rotate(360deg);
+    /* Fun rotation effect on hover */
+}
+
+/* --- CLEAN & SIMPLE FILE INPUT STYLES --- */
+
+.custom-file-input-simple {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    background-color: var(--background-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.custom-file-input-simple:hover {
+    border-color: var(--primary-color);
+    background-color: var(--card-bg-color);
+}
+
+/* Hide the default browser input */
+.custom-file-input-simple input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.custom-file-input-simple .upload-icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--text-color);
+    opacity: 0.7;
+    flex-shrink: 0;
+    /* Prevents the icon from shrinking */
+}
+
+.custom-file-input-simple .file-name-display {
+    color: var(--text-color);
+    opacity: 0.7;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- Style for when a file has been chosen --- */
+.custom-file-input-simple.file-chosen {
+    border-style: solid;
+    border-color: var(--success-color);
+    background-color: var(--card-bg-color);
+}
+
+.custom-file-input-simple.file-chosen .file-name-display {
+    opacity: 1;
+    font-weight: 600;
+}
+
+
+/* You can add this to any of your CSS files, like shared.css */
+
+.profile-container {
+    position: relative; /* This is the anchor for the dropdown */
+    display: inline-block;
+}
+
+.user-info {
+    cursor: pointer; /* Makes it obvious the profile button is clickable */
+}
+
+.profile-dropdown {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 120%; /* Position it below the nav button */
+    right: 0;
+    width: 250px;
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1001; /* Should be above other content */
+    overflow: hidden;
+    /* Uses the fadeIn animation you already have */
+    animation: fadeIn 0.3s;
+}
+
+/* This class will be toggled by JavaScript to show the dropdown */
+.profile-dropdown.show {
+    display: block;
+}
+
+.profile-header {
+    padding: 12px 16px;
+    background-color: var(--background-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.profile-body {
+    padding: 16px;
+}
+
+.profile-body p {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    word-wrap: break-word; /* Prevents long emails from overflowing */
+}
+
+.profile-body p:last-child {
+    margin-bottom: 0;
+}
+
+/* public/style.css */
+
+/* ... other styles ... */
+
+/* ==================================== */
+/* 3. NAVIGATION BAR & HEADER           */
+/* ==================================== */
+
+/* Navigation Bar */
+nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+
+    /* --- ▼▼▼ FROSTED GLASS EFFECT ▼▼▼ --- */
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+    -webkit-backdrop-filter: blur(10px); /* Blur effect for Safari */
+    backdrop-filter: blur(10px); /* Standard blur effect */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Subtle edge for the glass */
+    box-shadow: none; /* Remove shadow for the blurry state */
+    /* --- ▲▲▲ END OF EFFECT ▲▲▲ --- */
+
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* For Dark Mode, use a dark, semi-transparent background */
+body.dark-mode nav {
+    background-color: rgba(20, 20, 20, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Style for when the user scrolls down */
+nav.scrolled {
+    background-color: var(--card-bg-color); /* Becomes solid */
+    -webkit-backdrop-filter: none; /* Turn off blur when solid */
+    backdrop-filter: none; /* Turn off blur when solid */
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode nav.scrolled {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* public/style.css */
+
+/* ... after the NAVIGATION BAR & HEADER section ... */
+
+/* ==================================== */
+/* 4. HERO SECTION (VIDEO BACKGROUND)   */
+/* ==================================== */
+
+.hero {
+    position: relative; /* Needed to position child elements inside */
+    height: 100vh; /* Make the hero section take up the full screen height */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff; /* White text color */
+    overflow: hidden; /* Hide anything that spills outside */
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1; /* Place it at the very back */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 50% dark overlay */
+    z-index: 2; /* Place it above the video */
+}
+
+.hero-content {
+    position: relative; /* Ensures it can be positioned with z-index */
+    z-index: 3; /* Place it on top of everything else */
+    animation: fadeIn 1.5s ease-out; /* Add a nice fade-in effect */
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+/* Add some space above the book list */
+.main-header {
+    margin-top: 4rem;
+}
+
+/* public/style.css */
+
+/* ... other styles ... */
+
+/* ==================================== */
+/* 2. BASE & UTILITY STYLES             */
+/* ==================================== */
+
+/* ... any other resets ... */
+
+/* Base Body Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+
+    /* --- ▼▼▼ NEW MODERN BACKGROUND ▼▼▼ --- */
+    background-color: var(--background-color); /* Fallback color */
+    
+    /* Layered radial gradients for a soft, modern look */
+    background-image: 
+        radial-gradient(at 0% 0%, hsla(212, 80%, 70%, 0.3) 0px, transparent 50%),
+        radial-gradient(at 95% 90%, hsla(340, 80%, 70%, 0.3) 0px, transparent 50%);
+
+    background-attachment: fixed; /* Keeps the gradient fixed during scroll */
+    background-size: cover; /* Ensures the gradient covers the whole page */
+    background-repeat: no-repeat;
+    /* --- ▲▲▲ END OF NEW BACKGROUND ▲▲▲ --- */
+}
+
+/* Update dark mode with different, more subtle gradients */
+body.dark-mode {
+    --primary-color: #1e88e5;
+    --primary-hover: #1565c0;
+    --background-color: #121212;
+    --card-bg-color: #1e1e1e;
+    --text-color: #e0e0e0;
+    --border-color: #444;
+
+    /* New gradients for dark mode */
+    background-image: 
+        radial-gradient(at 5% 5%, hsla(212, 50%, 30%, 0.4) 0px, transparent 50%),
+        radial-gradient(at 95% 95%, hsla(280, 50%, 30%, 0.4) 0px, transparent 50%);
+}
+
+
+/* public/style.css */
+
+/* ... other styles ... */
+
+/* ==================================== */
+/* 10. FOOTER                           */
+/* ==================================== */
+
+footer {
+    margin-top: 4rem;
+    padding: 1.5rem 2rem;
+    
+    /* --- ▼▼▼ FROSTED GLASS EFFECT ▼▼▼ --- */
+    background-color: rgba(255, 255, 255, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    /* --- ▲▲▲ END OF EFFECT ▲▲▲ --- */
+
+    /* Flexbox for layout */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+body.dark-mode footer {
+    background-color: rgba(20, 20, 20, 0.6);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-links a {
+    color: var(--text-color);
+    opacity: 0.7;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-links a:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.social-links svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor; /* Inherits color from the 'a' tag */
+}
+
+/* public/style.css */
+
+/* --- PDF Viewer Page --- */
+.viewer-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.viewer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1.5rem;
+    flex-shrink: 0;
+    
+    background-color: rgba(255, 255, 255, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .viewer-header {
+    background-color: rgba(20, 20, 20, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.viewer-header-left, .viewer-header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#book-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 40%;
+}
+
+#pdf-viewer {
+    flex-grow: 1;
+    border: none;
+}
+
+/* Base style for all circular action buttons in the viewer */
+.viewer-back-btn, .viewer-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    color: var(--text-color);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.viewer-back-btn svg, .viewer-action-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+/* Hover effect for navigation buttons */
+.viewer-back-btn:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Hover effect for action buttons */
+#viewer-download-btn:hover {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+#theme-toggle.viewer-action-btn {
+    font-size: 1.2rem;
+}
+
+/* public/style.css */
+
+/* --- My Books / My Uploads Page --- */
+
+/* This targets the main grid on the my-books & my-uploads pages */
+#my-books-list, #my-uploads-list {
+    display: grid;
+    grid-template-columns: 1fr; /* Each card takes the full width */
+    gap: 1.5rem;
+}
+
+.purchased-book-card {
+    display: flex;
+    align-items: center;
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 15px;
+    gap: 1.5rem; /* Increased gap for better spacing */
+    overflow: hidden; /* Prevents content from spilling out */
+}
+
+.purchased-book-cover {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px; /* Slightly more rounded corners */
+    flex-shrink: 0; /* Important: prevents the image from shrinking */
+}
+
+.purchased-book-details {
+    flex-grow: 1; /* Allows this section to take all available space */
+    display: flex;
+    flex-direction: column;
+    align-self: stretch; /* Stretches to the full height of the card */
+    min-width: 0; /* Crucial fix for flexbox overflow issues */
+}
+
+.purchased-book-title {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.purchased-book-author {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+body.dark-mode .purchased-book-author {
+    color: #aaa;
+}
+
+.book-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto; /* Pushes buttons to the very bottom */
+}
+
+.book-actions a {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+    border-radius: 25px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.book-actions svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+.read-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.read-btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.download-btn {
+    background-color: var(--success-color);
+    color: #fff;
+}
+
+.download-btn:hover {
+    background-color: #1e7e34; /* Darker green */
+    transform: translateY(-2px);
+}
+
+/* Replace it with this corrected rule */
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-right: auto;
+    display: flex;
+    align-items: center; /* This is the key property for vertical alignment */
+}
+
+/* Add this at the end of your style.css file */
+
+/* ==================================== */
+/* 12. RATING SYSTEM STYLES             */
+/* ==================================== */
+
+.rating-display, .rating-input {
+    margin-bottom: 1rem;
+}
+
+.rating-display {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rating-display .star {
+    font-size: 1.2rem;
+    color: #ccc; /* Color for empty stars */
+}
+
+.rating-display .star.filled {
+    color: #f0ad4e; /* Color for filled stars */
+}
+
+.rating-text {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+body.dark-mode .rating-text {
+    color: #aaa;
+}
+
+.rating-input p {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.stars-container {
+    display: flex;
+}
+
+.star-input {
+    font-size: 1.5rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+}
+
+/* Make stars interactive on hover */
+.rating-input:hover .star-input {
+    color: #f0ad4e;
+}
+
+.star-input:hover ~ .star-input {
+    color: #ccc;
+}
+
+.star-input:hover {
+    transform: scale(1.2);
+}
+
+
