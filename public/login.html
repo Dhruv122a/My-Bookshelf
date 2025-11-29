@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <div class="background-container"></div>
     <nav>
         <a href="index.html" class="logo"><img src="assets/logo.png" alt="BookShelf Logo">BookShelf</a>
         <div class="nav-right">
@@ -29,9 +30,15 @@
                 </div>
                 <div class="form-group">
                     <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                    <div class="password-wrapper">
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                        <span class="toggle-password" id="toggleLoginPassword">
+                        </span>
+                    </div>
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit" id="loginButton">
+                    <span class="button-text">Login</span>
+                </button>
             </form>
             <p id="loginMessage"></p>
         </div>
